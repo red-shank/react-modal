@@ -5,10 +5,11 @@ import ErrorFill from './errorFilled';
 import ErrorOut from './errorOutline';
 import InfoOut from './infoWarningOutline';
 import InfoFill from './infoWarningFilled';
+import CloseOut from './closeOutline';
 
 const CheckFilled = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="check-filled">
+    <span className="redshank-icon" role="img" aria-label="check-filled">
       <CheckFill />
     </span>
   );
@@ -16,7 +17,7 @@ const CheckFilled = () => {
 
 const CheckOutline = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="check-outline">
+    <span className="redshank-icon" role="img" aria-label="check-outline">
       <CheckOut />
     </span>
   );
@@ -24,7 +25,7 @@ const CheckOutline = () => {
 
 const ErrorFilled = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="error-filled">
+    <span className="redshank-icon" role="img" aria-label="error-filled">
       <ErrorFill />
     </span>
   );
@@ -32,7 +33,7 @@ const ErrorFilled = () => {
 
 const ErrorOutline = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="error-outline">
+    <span className="redshank-icon" role="img" aria-label="error-outline">
       <ErrorOut />
     </span>
   );
@@ -40,7 +41,7 @@ const ErrorOutline = () => {
 
 const InfoFilled = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="info-filled">
+    <span className="redshank-icon" role="img" aria-label="info-filled">
       <InfoFill />
     </span>
   );
@@ -48,7 +49,7 @@ const InfoFilled = () => {
 
 const InfoOutline = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="info-outline">
+    <span className="redshank-icon" role="img" aria-label="info-outline">
       <InfoOut />
     </span>
   );
@@ -56,7 +57,7 @@ const InfoOutline = () => {
 
 const WarningFilled = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="warning-filled">
+    <span className="redshank-icon" role="img" aria-label="warning-filled">
       <InfoFill />
     </span>
   );
@@ -64,8 +65,16 @@ const WarningFilled = () => {
 
 const WarningOutline = () => {
   return (
-    <span className="ant-icon" role="img" aria-label="warning-outline">
+    <span className="redshank-icon" role="img" aria-label="warning-outline">
       <InfoOut />
+    </span>
+  );
+};
+
+const CloseOutline = () => {
+  return (
+    <span className="redshank-icon" role="img" aria-label="warning-outline">
+      <CloseOut />
     </span>
   );
 };
@@ -78,5 +87,6 @@ export {
   InfoFilled,
   InfoOutline,
   WarningFilled,
-  WarningOutline
+  WarningOutline,
+  CloseOutline
 };

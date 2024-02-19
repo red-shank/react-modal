@@ -1,24 +1,14 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ModalType } from '../../types';
-import { Wrapper } from './Wrapper';
-import renderModal from '../../utils/renderModal';
+import renderModal from './renderModal';
 
-export const Modal = ({
-  isOpen,
-  onClose,
-  children,
-  maskClosable = true,
-  position = 'center'
-}: ModalType) => {
+export const Modal = ({ children, ...props }: ModalType) => {
+  const [key] = useState<string>(() => crypto.randomUUID());
+
   useEffect(() => {
-    renderModal(
-      <Wrapper position={position} onClose={maskClosable ? onClose : undefined}>
-        {children}
-      </Wrapper>,
-      isOpen
-    );
-  }, [isOpen]);
+    renderModal(key, <>{children}</>, props);
+  }, [key, children, props]);
 
   return null;
 };

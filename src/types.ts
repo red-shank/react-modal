@@ -4,6 +4,7 @@ import { PositionType } from './utils/resolvePosition';
 export type ModalType = PropsWithChildren<{
   position?: PositionType;
   animation?: string;
+  closable?: boolean;
   maskClosable?: boolean;
   isOpen: boolean;
   onClose: () => void;
