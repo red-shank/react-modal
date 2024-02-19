@@ -1,10 +1,10 @@
 import * as React from 'react';
-import CheckFill from '../icons/checkFilled';
-import CheckOut from '../icons/checkOutline';
-import ErrorFill from '../icons/errorFilled';
-import ErrorOut from '../icons/errorOutline';
-import InfoOut from '../icons/infoWarningOutline';
-import InfoFill from '../icons/infoWarningFilled';
+import CheckFill from './checkFilled';
+import CheckOut from './checkOutline';
+import ErrorFill from './errorFilled';
+import ErrorOut from './errorOutline';
+import InfoOut from './infoWarningOutline';
+import InfoFill from './infoWarningFilled';
 
 const CheckFilled = () => {
   return (

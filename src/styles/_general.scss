@@ -1,5 +1,4 @@
-.wrapper-notifications,
-.wrapper-messages {
+.redshank-modal-wrapper {
   box-sizing: border-box;
   padding: 0;
   color: #000000d9;
@@ -12,7 +11,7 @@
   z-index: 1010;
 }
 
-.position-top-left {
+.position-left {
   top: 24px;
   left: 0;
   right: auto;
@@ -20,7 +19,7 @@
   margin: 0 0 0 20px;
 }
 
-.position-top-right {
+.position-right {
   right: 0;
   top: 24px;
   left: auto;
@@ -28,14 +27,14 @@
   margin: 0 20px 0 0;
 }
 
-.position-top-center {
+.position-center {
   top: 24px;
   bottom: auto;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.position-bottom-center {
+.position-bottom {
   left: 50%;
   top: auto;
   bottom: 24px;
@@ -43,39 +42,11 @@
   transform: translateX(-50%);
 }
 
-.position-top-center,
-.position-bottom-center {
-  .ant-message-notice {
-    margin: 0 auto 16px;
-  }
-}
-
-.position-bottom-right {
-  right: 0;
-  left: auto;
-  top: auto;
-  bottom: 24px;
-  margin: 0 20px 0 auto;
-}
-
-.position-bottom-left {
-  right: auto;
-  left: 0;
-  top: auto;
-  bottom: 24px;
-  margin: 0 auto 0 20px;
-}
-
-@media (min-width: 768px) {
-  .position-bottom-left,
-  .position-top-left {
-    margin: 0 auto 0 24px;
-  }
-
-  .position-bottom-right,
-  .position-top-right {
-    margin: 0 24px 0 auto;
-  }
+.position-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
 }
 
 .ant-closable {
@@ -112,20 +83,5 @@
 .icon-error {
   .icon {
     fill: #ff4d4f;
-  }
-}
-
-.icon-message {
-  padding-right: 7px;
-  padding-top: 0.5px;
-
-  .ant-icon {
-    display: flex;
-    align-items: center;
-  }
-
-  .icon {
-    width: 20px;
-    height: 20px;
   }
 }

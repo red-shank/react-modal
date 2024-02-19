@@ -1,24 +1,20 @@
-import { MessageProps } from './components/message';
-import { NotificationProps } from './components/notification';
-import { Root } from 'react-dom/client';
+import { PropsWithChildren } from 'react';
 import { PositionType } from './utils/resolvePosition';
 
-export type ElementType = 'success' | 'error' | 'warning' | 'info';
-export type DurationType = number | null | false;
-export type RenderMessageProps = Omit<MessageProps, 'message' | 'icon'> & {
-  message: JSX.Element;
-  icon: JSX.Element;
-};
+export type ModalType = PropsWithChildren<{
+  position?: PositionType;
+  animation?: string;
+  maskClosable?: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+}>;
 
-export type RenderNotificationProps = Omit<
-  NotificationProps,
-  'message' | 'icon' | 'title'
-> & {
-  title: JSX.Element;
-  message: JSX.Element;
-  icon: JSX.Element;
-};
+export type ModalHeaderType = PropsWithChildren<{
+  isFixing: boolean;
+}>;
 
-export type RootState = {
-  [key in PositionType]?: Root;
-};
+export type ModalContentType = PropsWithChildren<{}>;
+
+export type ModalFooterType = PropsWithChildren<{
+  isFixing: boolean;
+}>;
