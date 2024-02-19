@@ -1,36 +1,21 @@
-# antd-notifications-messages
+# @redshank/react-modal
 
-> **_NOTE:_** This package working with React 18. If you used a version 16.x or 17.x, install antd-notifications-messages@1.5.6.
+> **_NOTE:_** This package working with React 18.
 
-Obtain a behavior equal to the notifications and messages found in the great Ant-Design library, credit for this
-libraries.
-[demo here](https://antd-notifications-messages.vercel.app)
-
-- [Antd - notifications](https://ant.design/components/notification)
-- [Antd - messages](https://ant.design/components/message)
-
-## Why to use?
-
-Sometimes you probably have a mini project or you just don't need to install the whole antd package to simply use
-notifications or messages.
+This package was created due to the lack of really good options for modals in reactjs, this is a library with zero
+dependencies in which you can render modals from anywhere, either through the API or from its component. With a nice UI
+design.
 
 ## How to install
 
 Install from:
 
-- `npm install antd-notifications-messages`
+- `npm install @redshank/react-modal`
 
 or
 
-- `yarn add antd-notifications-messages`
+- `yarn add @redshank/react-modal`
 
-for React 16.x and 17.x.
-
-- `npm install antd-notifications-messages@1.5.6`
-
-or
-
-- `yarn add antd-notifications-messages@1.5.6`
 
 ## How to use:
 
@@ -39,7 +24,7 @@ import css in first file to project
 index.js
 
 ```jsx
-import 'antd-notifications-messages/lib/styles/style.css';
+import '@redshank/react-modal/lib/styles/style.css';
 ```
 
 Now use the API.
@@ -47,103 +32,29 @@ Now use the API.
 # Notifications
 
 ```js
-import { notification } from 'antd-notifications-messages';
+import Modal from '@redshank/react-modal';
 
 function App() {
-  const show = (type) => {
-    notification({
-      type,
-      title: 'This is a Title',
-      message: `This is a notification type ${type}`
-    });
-  };
-
+  const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <div>
-      <button onClick={() => show('success')}>Success</button>
-      <button onClick={() => show('info')}>Info</button>
-      <button onClick={() => show('warning')}>Warning</button>
-      <button onClick={() => show('error')}>Error</button>
-    </div>
-  );
-}
-```
-
-# Message
-
-```js
-import { message } from 'antd-notifications-messages';
-
-function App() {
-  const show = (type) => {
-    message({
-      type,
-      message: `This is a notification type ${type}`
-    });
-  };
-
-  return (
-    <div>
-      <button onClick={() => show('success')}>Success</button>
-      <button onClick={() => show('info')}>Info</button>
-      <button onClick={() => show('warning')}>Warning</button>
-      <button onClick={() => show('error')}>Error</button>
-    </div>
-  );
-}
-```
-
-# Custom render
-
-For more api props definition [Message Render Props](#message-render) or [Notification Render Props](#notification-render)
-
-```js
-import { message, notification } from 'antd-notifications-messages';
-
-function App() {
-  const showMessage = (type) => {
-    message({
-      type,
-      message: 'The custom Render',
-      render: ({ message, style, className, icon }) => {
-        return (
-          <div style={{ ...style, background: 'black' }} className={className}>
-            <p style={{ color: 'white', display: 'flex' }}>
-              <span>{icon}</span>
-              <b> {message}</b>
-            </p>
-          </div>
-        );
-      }
-    });
-  };
-
-  const showNotification = (type) => {
-    notification({
-      type,
-      title: 'The title',
-      message: 'The custom Render',
-      render: ({ message, style, className, icon, title }) => {
-        return (
-          <div style={{ ...style, background: 'black' }} className={className}>
-            <h5 style={{ color: 'white' }}>
-              <span>{icon}</span> {title}
-            </h5>
-            <p style={{ color: 'white' }}>
-              <b>{message}</b>
-            </p>
-          </div>
-        );
-      }
-    });
-  };
-
-  return (
-    <div>
-      <button onClick={() => showMessage('success')}>Message custom</button>
-      <button onClick={() => showNotification('info')}>
-        Notification custom
+      <button
+        onClick={() => setIsOpen(true)}>
+        Open
       </button>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}>
+        <h1>Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur 
+          adipisicing elit. Corporis esse expedita,
+          libero maxime placeat quam sunt tenetur? 
+          Eos illum laudantium nisi provident quaerat.
+          Cupiditate dolorum eius natus neque nulla
+          praesentium!</p>
+      </Modal>
     </div>
   );
 }
@@ -152,7 +63,7 @@ function App() {
 ## Notification Props
 
 |   prop   | type   |  default   |                                                           description                                                           |
-| :------: | ------ | :--------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+|:--------:|--------|:----------:|:-------------------------------------------------------------------------------------------------------------------------------:|
 |  title   | string |     ""     |                                                 Required. Title of notification                                                 |
 | message  | string |     ""     |                                                Required. Message of notification                                                |
 |   type   | enum   | "success"  |                        Optional. defines the type of notification. "success", "info", "warning", "error"                        |
@@ -162,7 +73,7 @@ function App() {
 ## Message Props
 
 |   prop   | type             |   default   |                                                           description                                                           |
-| :------: | ---------------- | :---------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+|:--------:|------------------|:-----------:|:-------------------------------------------------------------------------------------------------------------------------------:|
 | message  | string           |     ""      |                                                Required. Message of notification                                                |
 |   type   | enum             |  "success"  |                        Optional. defines the type of notification. "success", "info", "warning", "error"                        |
 | position | enum             | "topCenter" | Optional. defines the position of notification. "topRight", "topLeft", "topCenter", "bottomRight", "bottomLeft", "bottomCenter" |
@@ -173,16 +84,16 @@ function App() {
 
 ```jsx
 const render = ({
-  title,
-  message,
-  icon,
-  type,
-  id,
-  onRemove,
-  className,
-  style,
-  onClick
-}) => {
+                  title,
+                  message,
+                  icon,
+                  type,
+                  id,
+                  onRemove,
+                  className,
+                  style,
+                  onClick
+                }) => {
   return (
     <div style={style} className={className} onClick={onClick}>
       <h5>{title}</h5>
@@ -192,32 +103,14 @@ const render = ({
 };
 ```
 
-## Message Render
+# Credits
 
-```jsx
-const render = ({
-  message,
-  icon,
-  type,
-  id,
-  onRemove,
-  className,
-  style,
-  closable,
-  onClick
-}) => {
-  return (
-    <div style={style} className={className} onClick={onClick}>
-      <p>{message}</p>
-    </div>
-  );
-};
-```
+### Kevin Rivas (Author)
+[Portfolio](https://kevin-rivas.com)
+[Linkedin](https://www.linkedin.com/in/kevin-rivas-frontend-developer)
 
-### Credits
-
-[Portfolio](https://kevin-rivas.vercel.app)
-
-[Linkedin](https://www.linkedin.com/in/kevin-rivas-frontend-developer/)
+### Daniel Tejada (Collaborator)
+[Portfolio](#)
+[Linkedin](#)
 
 Create with Love ❤️ by [Kevin Rivas](https://kevin-rivas.vercel.app).
