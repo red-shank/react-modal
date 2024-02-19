@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { ModalType } from '../../global';
+import { useEffect } from 'react';
+import { ModalType } from '../../types';
 import { Wrapper } from './Wrapper';
+import renderModal from '../../utils/renderModal';
 
-export const Modal: React.FC<ModalType> = ({
+export const Modal = ({
   isOpen,
   onClose,
   children,
-  maskClosable,
+  maskClosable = true,
   position = 'center'
-  // animation
-}) => {
-  if (!isOpen) return null;
-  return (
-    <Wrapper
-      isOpen={isOpen}
-      position={position}
-      onClose={maskClosable ? onClose : undefined}
-    >
-      {children}
-    </Wrapper>
-  );
+}: ModalType) => {
+  useEffect(() => {
+    renderModal(
+      <Wrapper position={position} onClose={maskClosable ? onClose : undefined}>
+        {children}
+      </Wrapper>,
+      isOpen
+    );
+  }, [isOpen]);
+
+  return null;
 };

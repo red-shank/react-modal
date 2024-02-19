@@ -1,14 +1,13 @@
 import { PositionType } from './resolvePosition';
 
-const resolve = {
+const resolve: Record<PositionType, string> = {
   // top
-  topLeft: 'fade-in-left',
-  topRight: 'fade-in-right',
-  topCenter: 'fade-in-top-center',
+  top: 'fade-in-top',
+  left: 'fade-in-left',
+  right: 'fade-in-right',
+  center: 'fade-in-top-center',
   // bottom
-  bottomLeft: 'fade-in-left',
-  bottomRight: 'fade-in-right',
-  bottomCenter: 'fade-in-bottom-center'
+  bottom: 'fade-in-bottom-center'
 };
 
 export function resolveAnimation(animation: PositionType) {

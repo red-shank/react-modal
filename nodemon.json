@@ -1,4 +1,5 @@
 {
   "ignore": ["example", "lib"],
+  "ext": "ts,tsx,json,css",
   "delay": 1000
 }
