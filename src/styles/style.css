@@ -1,6 +1,15 @@
 @import 'colors.css';
 @import 'animation.css';
 
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+
 .redshank-modal-wrapper {
   width: 100dvw;
   height: 100dvh;

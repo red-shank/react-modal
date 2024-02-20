@@ -4,6 +4,7 @@ import Modal, { ACTIONS } from '../../../src';
 import { useState } from 'react';
 
 function App() {
+  const [text, setText] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
@@ -30,8 +31,15 @@ function App() {
 
       <Modal position="center" isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <div style={{ background: 'white', padding: 20, borderRadius: 10 }}>
-          <h1>Title</h1>
-          <p>description</p>
+          <h1>Reactivity Modal</h1>
+          <p>{text}</p>
+
+          <input
+            value={text}
+            placeholder="Insert text"
+            style={{ marginBottom: 20 }}
+            onChange={(e) => setText(e?.target?.value)}
+          />
           <button onClick={() => setIsOpen2(true)}>Open</button>
         </div>
       </Modal>
