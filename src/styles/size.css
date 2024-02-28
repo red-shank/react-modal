@@ -1,0 +1,10 @@
+:root {
+  --redshank-width-xs: 300px;
+  --redshank-width-sm: 400px;
+  --redshank-width-md: 600px;
+  --redshank-width-lg: 800px;
+  --redshank-width-xl: 1000px;
+  --redshank-width-xxl: 1200px;
+  --redshank-width-full: 100vw;
+  --redshank-height-full: 100vh;
+}

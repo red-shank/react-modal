@@ -1,5 +1,12 @@
-import { PropsWithChildren } from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
 import { PositionType } from './utils/resolvePosition';
+
+type CommonProps = {
+  className?: string;
+  style?: CSSProperties;
+  id?: string;
+  [key: string]: unknown;
+};
 
 export type ModalType = PropsWithChildren<{
   position?: PositionType;
@@ -10,12 +17,26 @@ export type ModalType = PropsWithChildren<{
   onClose: () => void;
 }>;
 
-export type ModalHeaderType = PropsWithChildren<{
-  isFixing: boolean;
-}>;
+export type ModalHeaderType = PropsWithChildren<
+  CommonProps & {
+    isFixing?: boolean;
+    position?: 'start' | 'center' | 'end';
+  }
+>;
 
-export type ModalContentType = PropsWithChildren<{}>;
+export type ModalContentType = PropsWithChildren<
+  CommonProps & {
+    isFixing?: boolean;
+    position?: 'start' | 'center' | 'end';
+    width?: string | number | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full';
+  }
+>;
 
-export type ModalFooterType = PropsWithChildren<{
-  isFixing: boolean;
-}>;
+export type ModalBodyType = PropsWithChildren<CommonProps & {}>;
+
+export type ModalFooterType = PropsWithChildren<
+  CommonProps & {
+    isFixing?: boolean;
+    position?: 'start' | 'center' | 'end';
+  }
+>;

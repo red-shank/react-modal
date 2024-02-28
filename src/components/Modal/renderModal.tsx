@@ -5,7 +5,10 @@ import { Wrapper } from './Wrapper';
 import { ModalType } from '../../types';
 
 type InternalModalProps = Partial<
-  Pick<ModalType, 'position' | 'onClose' | 'maskClosable' | 'animation'>
+  Pick<
+    ModalType,
+    'position' | 'onClose' | 'maskClosable' | 'animation' | 'closable'
+  >
 >;
 
 type ElementType = InternalModalProps & {
@@ -32,7 +35,7 @@ const getRoot = () => {
 const renderItems = (root: Root, _elements: ElementType[]) => {
   root.render(
     <Fragment>
-      {_elements.map((item) => (
+      {_elements.map(item => (
         <Wrapper
           id={item.key.toString()}
           key={item.key}
@@ -40,10 +43,10 @@ const renderItems = (root: Root, _elements: ElementType[]) => {
           position={item?.position}
           onClose={item?.onClose}
           maskClosable={item?.maskClosable}
+          closable={item?.closable}
           style={{
             zIndex: item?.zIndex
-          }}
-        >
+          }}>
           {item.Element}
         </Wrapper>
       ))}
@@ -59,7 +62,7 @@ export default function renderModal(
   const root = getRoot();
   const key = _key ?? crypto.randomUUID();
 
-  const existIndex = elements.findIndex((item) => item.key === key);
+  const existIndex = elements.findIndex(item => item.key === key);
 
   if (props.isOpen) {
     if (existIndex !== -1) {
@@ -78,7 +81,7 @@ export default function renderModal(
       });
     }
   } else {
-    elements = elements.filter((item) => item.key !== key);
+    elements = elements.filter(item => item.key !== key);
   }
 
   renderItems(root, [...elements]);
@@ -89,7 +92,7 @@ function pushModal(Element: ReactElement, opts?: InternalModalProps) {
     opts ||
     ({} as Pick<
       ModalType,
-      'onClose' | 'position' | 'maskClosable' | 'animation'
+      'onClose' | 'position' | 'maskClosable' | 'animation' | 'closable'
     >);
 
   const root = getRoot();
@@ -97,7 +100,7 @@ function pushModal(Element: ReactElement, opts?: InternalModalProps) {
   const key = Element?.key ?? crypto.randomUUID();
 
   const onClose = () => {
-    elements = elements.filter((item) => item.key !== key);
+    elements = elements.filter(item => item.key !== key);
     options?.onClose?.();
     renderItems(root, [...elements]);
   };

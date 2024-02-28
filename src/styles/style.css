@@ -1,5 +1,7 @@
 @import 'colors.css';
 @import 'animation.css';
+@import 'size.css';
+
 
 *,
 ::before,
@@ -84,7 +86,7 @@
   border: none;
   background-color: transparent;
   font-size: 20px;
-  padding: 8px;
+  padding: 10px;
   line-height: 0;
   color: var(--redshank-closable-color);
   outline: none;
@@ -93,3 +95,33 @@
 .btn-closable:focus {
   outline: none;
 }
+
+.modal-content {
+  background-color: var(--redshank-bg-modal-color);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 10px;
+}
+
+.modal-header{
+  display: flex;
+  justify-content: center;
+}
+
+.modal-footer.position-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-footer.position-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.modal-footer.position-center {
+  display: flex;
+  justify-content: center;
+}
+
