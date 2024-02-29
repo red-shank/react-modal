@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { resolvePosition } from '../../utils/resolvePosition';
 import { ModalType } from '../../types';
-import { wrapperClass } from '../../config/constant';
 import { CSSProperties } from 'react';
 import { CloseOutline } from '../Icons/icon';
+import cnx from '../../utils/cnx';
+import useCloseWithKeys from '../hooks/useCloseWithKeys';
 
 type WrapperType = Pick<
   ModalType,
@@ -26,21 +27,23 @@ export const Wrapper: React.FC<WrapperType> = ({
   maskClosable = true,
   position = 'center'
 }) => {
+  useCloseWithKeys(onClose);
+
   if (!isOpen) return null;
+
   const positionClass = resolvePosition(position);
   return (
     <div
       id={id}
       style={style}
-      className={`${wrapperClass} ${className}`}
+      className={cnx('wrapper', className)}
       onClick={() => {
         if (maskClosable) onClose?.();
-      }}
-    >
-      <div className={`container ${positionClass}`}>
-        <div className="relative" onClick={(e) => e.stopPropagation()}>
+      }}>
+      <div className={cnx(`container`, positionClass)}>
+        <div className={cnx(`relative`)} onClick={e => e.stopPropagation()}>
           {closable && (
-            <button onClick={onClose} className="btn-closable">
+            <button onClick={onClose} className={cnx('btn-closable')}>
               <CloseOutline />
             </button>
           )}
