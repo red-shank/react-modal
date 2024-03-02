@@ -1,29 +1,37 @@
-import React, { useMemo } from 'react';
+import * as React from 'react';
 import { ModalContentType } from '../../types';
+import cnx, { resolveClassName } from '../../utils/cnx';
+
+const VALID_WIDTHS = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'full'];
 
 const ModalContent = ({
   children,
   position,
-  width,
+  scrollable,
+  width = 'sm',
   className = '',
   ...rest
 }: ModalContentType) => {
-  const style = useMemo(() => {
-    if (typeof width === 'undefined') return {};
-    if (width === 'full')
-      return {
-        width: `var(--redshank-width-full)`,
-        height: `var(--redshank-height-full)`
-      };
-    if (['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].includes(width.toString())) {
-      return { width: `var(--redshank-width-${width})` };
+  const style = React.useMemo(() => {
+    if (
+      typeof width !== 'undefined' &&
+      !VALID_WIDTHS.includes(width.toString())
+    ) {
+      return { width: width };
     }
-    return { width };
+    return {};
   }, [width]);
 
   return (
     <div
-      className={`modal-content position-${position || ''}`}
+      className={cnx(
+        'content',
+        className,
+        position && `position-${position}`,
+        scrollable && resolveClassName('scrollable'),
+        VALID_WIDTHS.includes(width?.toString?.() ?? '') &&
+          resolveClassName(width as string)
+      )}
       style={style}
       {...rest}>
       {children}

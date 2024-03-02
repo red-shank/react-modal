@@ -26,11 +26,13 @@ export type ModalHeaderType = PropsWithChildren<
 
 export type ModalContentType = PropsWithChildren<
   CommonProps & {
-    isFixing?: boolean;
+    scrollable?: boolean;
     position?: 'start' | 'center' | 'end';
     width?: string | number | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full';
   }
 >;
+
+export type ModalTitleProps = PropsWithChildren<CommonProps>;
 
 export type ModalBodyType = PropsWithChildren<CommonProps & {}>;
 

@@ -1,0 +1,183 @@
+@import '_animation.scss';
+@import '_variables.scss';
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+.redshank-modal-wrapper {
+  width: 100dvw;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: 0;
+  top: 0;
+  left: 0;
+  color: var(--redshank-text-color);
+  background-color: var(--redshank-bg-wrapper-color);
+  font-variant: tabular-nums;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: fixed;
+  z-index: 1010;
+}
+
+.redshank-modal-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--redshank-ring-offset-shadow, 0 0 #0000), var(--redshank-ring-shadow, 0 0 #0000);
+}
+
+.redshank-modal-relative {
+  max-height: 100%;
+  position: relative;
+}
+
+.redshank-modal-content {
+  background-color: var(--redshank-bg-modal-color);
+  border-radius: 10px;
+
+  &.redshank-modal-scrollable {
+    max-height: 100%;
+    overflow-y: auto;
+  }
+}
+
+.redshank-modal-footer, .redshank-modal-header, .redshank-modal-body {
+  padding: var(--redshank-padding);
+}
+
+.redshank-modal-sticky {
+  position: sticky;
+  background-color: var(--redshank-bg-modal-color);
+}
+
+.redshank-modal-header {
+  &.redshank-modal-sticky {
+    top: 0;
+    left: 0;
+  }
+}
+
+.redshank-modal-footer {
+  &.redshank-modal-sticky {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.redshank-modal-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.redshank-modal-footer.position-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.redshank-modal-footer.position-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.redshank-modal-footer.position-center {
+  display: flex;
+  justify-content: center;
+}
+
+.position-left {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.position-right {
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.position-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.position-bottom {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.position-top {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rotate {
+  transform: rotate(-90deg);
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+.redshank-modal-btn-closable {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: 20px;
+  line-height: 0;
+  color: rgb(var(--redshank-closable-color));
+  outline: none;
+  z-index: 100;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: rgba(var(--redshank-closable-color), .1);
+  }
+}
+
+/* Modal Sizes */
+.redshank-modal-xs {
+  width: var(--redshank-width-xs);
+}
+
+.redshank-modal-sm {
+  width: var(--redshank-width-sm);
+}
+
+.redshank-modal-md {
+  width: var(--redshank-width-md);
+}
+
+.redshank-modal-lg {
+  width: var(--redshank-width-lg);
+}
+
+.redshank-modal-xl {
+  width: var(--redshank-width-xl);
+}
+
+.redshank-modal-xxl {
+  width: var(--redshank-width-xxl);
+}
+
+.redshank-modal-full {
+  border-radius: 0;
+  width: var(--redshank-width-full);
+  height: var(--redshank-height-full);
+}
+

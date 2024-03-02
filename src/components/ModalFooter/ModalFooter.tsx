@@ -1,15 +1,22 @@
-import React from 'react';
+import * as React from 'react';
 import { ModalFooterType } from '../../types';
+import cnx, { resolveClassName } from '../../utils/cnx';
 
-const ModalFooter = ({
+const ModalFooter: React.FC<ModalFooterType> = ({
   children,
-  position,
+  isFixing,
+  position = 'end',
   className = '',
   ...rest
-}: ModalFooterType) => {
+}) => {
   return (
     <div
-      className={`modal-footer position-${position || ''} ${className}`}
+      className={cnx(
+        'footer',
+        position && `position-${position}`,
+        isFixing && resolveClassName('sticky'),
+        className
+      )}
       {...rest}>
       {children}
     </div>
